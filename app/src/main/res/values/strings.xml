@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Quizzy</string>
+    <string name="app_description"> Welcome to Quizzy. Choose \"Quiz\" in the menu to be quizzed. Choose \"Database\" to delete, or look at the objects you will be
+        asked about in the quiz. Choose \"Add\" to add objects to the database
+        </string>
+    <string name="take_picture">Take picture</string>
+    <string name="save_editTextHint">Who is in this picture..</string>
+    <string name="save_button">Save</string>
+    <string name="picFromGallery_button">From gallery</string>
+    <string name="startQuiz_button">Start quiz</string>
+    <string name="svarOnPictureHint_EditText">ho is in this picture..</string>
+    <string name="currentScore_TextView">your score: 0/0</string>
+
+
+
+
+
+</resources>

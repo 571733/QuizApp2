@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity"
+    android:background="@color/backgroundPinkish">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menu_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/mymenu" />
+
+    <ImageView
+        android:id="@+id/imageView_quiz"
+        android:layout_width="169dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score_textView" />
+
+    <Button
+        android:id="@+id/quiz_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button"
+        android:onClick="quizpic"
+        android:text="@string/startQuiz_button"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_quiz" />
+
+    <EditText
+        android:id="@+id/svar_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:hint="@string/svarOnPictureHint_EditText"
+        android:inputType="textPersonName"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/correctAnswer_imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_button" />
+
+    <Button
+        android:id="@+id/svar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button"
+        android:enabled="false"
+        android:onClick="svar"
+        android:text="Svar"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_quiz"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/score_textView"
+        android:layout_width="202dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/currentScore_TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_toolbar" />
+
+    <TextView
+        android:id="@+id/galtSvar_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svar_editText" />
+
+    <ImageView
+        android:id="@+id/correctAnswer_imageView"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="264dp"
+        android:layout_marginEnd="35dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/svar_editText"
+        app:layout_constraintTop_toBottomOf="@+id/menu_toolbar"
+        app:srcCompat="@drawable/ic_done" />
+
+    <ImageView
+        android:id="@+id/wrongAnswer_imageView"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="264dp"
+        android:layout_marginEnd="35dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/svar_editText"
+        app:layout_constraintTop_toBottomOf="@+id/menu_toolbar"
+        app:srcCompat="@drawable/ic_wrong" />
+
+    <TextView
+        android:id="@+id/quizDone_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svar_editText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

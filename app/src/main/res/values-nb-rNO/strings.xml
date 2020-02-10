@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quizzy</string>
+    <string name="app_description">Velkommen til quizappen. Velg \"Quiz\" i menyen for å bli quizet. Velg \"Database\" for å slette, eller se over
+    objekter som vil komme i quizen. Velg \"Add\" for å legge til bilder i databasen</string>
+    <string name="take_picture">Ta bilde</string>
+    <string name="save_editTextHint">Hvem er på bildet..</string>
+    <string name="save_button">Lagre</string>
+    <string name="picFromGallery_button">Fra galleri</string>
+    <string name="startQuiz_button">Start quiz</string>
+    <string name="svarOnPictureHint_EditText">Hvem er på bildet..</string>
+    <string name="currentScore_TextView">Din score: 0/0</string>
+
+</resources>

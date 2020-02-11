@@ -26,6 +26,8 @@ import android.widget.Toast;
 import com.inducesmile.oblig1.database.AppDatabase;
 import com.inducesmile.oblig1.database.QuizItem;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -69,6 +71,11 @@ public class AddActivity extends AppCompatActivity {
             case R.id.database:
                 Intent intentDatabase = new Intent(AddActivity.this, DatabaseActivity.class);
                 startActivity(intentDatabase);
+                return true;
+
+            case R.id.preferences:
+                Intent intentPref = new Intent(AddActivity.this, Preferences.class);
+                startActivity(intentPref);
                 return true;
 
             default:
@@ -117,10 +124,19 @@ public class AddActivity extends AppCompatActivity {
         if (cameraImage != null) {
             BitmapDrawable drawable = (BitmapDrawable) cameraImage.getDrawable();
             Bitmap bitmap = drawable.getBitmap();
+           Log.i("Bitten", ""+bitmap.getByteCount());
+            if (bitmap.getByteCount() > 2000000){
+                compressImage(bitmap);
+                Log.i("storring1", ""+compressImage(bitmap));
+            }
             savePicName = (EditText) findViewById(R.id.save_editText);
             Log.i("Status", "" + savePicName.getText().toString());
             if (!savePicName.getText().toString().equals("")) {
-                byte[] bytes = DbBitmapUtility.getBytes(bitmap);
+                byte[] bytes = DbBitmapUtility.getBytes(compressImage(bitmap));
+               Log.i("storring ", ""+bytes.length);
+
+
+
                 QuizItem newItem = new QuizItem(0, savePicName.getText().toString(), bytes);
 
                 Asyncclass asyncTask = new Asyncclass(getApplicationContext(), newItem);
@@ -161,5 +177,20 @@ public class AddActivity extends AppCompatActivity {
             db.quizDao().addItem(quizItem);
             return null;
         }
+    }
+
+    private Bitmap compressImage(Bitmap image) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 10, baos);//Compression quality, here 100 means no compression, the storage of compressed data to baos
+        int options = 90;
+        while (baos.toByteArray().length / 1024 > 400) {  //Loop if compressed picture is greater than 400kb, than to compression
+            baos.reset();//Reset baos is empty baos
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//The compression options%, storing the compressed data to the baos
+            options -= 10;//Every time reduced by 10
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//The storage of compressed data in the baos to ByteArrayInputStream
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//The ByteArrayInputStream data generation
+        return bitmap;
     }
 }

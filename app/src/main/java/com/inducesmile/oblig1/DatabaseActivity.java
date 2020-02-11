@@ -102,6 +102,11 @@ public class DatabaseActivity extends AppCompatActivity {
                 startActivity(intentDatabase);
                 return true;
 
+            case R.id.preferences:
+                Intent intentPref = new Intent(DatabaseActivity.this, Preferences.class);
+                startActivity(intentPref);
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

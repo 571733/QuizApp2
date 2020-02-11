@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<QuizItem> quizData = new ArrayList<>();
-    static boolean isLoaded = false;
+   public static boolean isLoaded = false;
     SharedPreferences usernameStored;
 
     @Override
@@ -134,5 +134,11 @@ public class MainActivity extends AppCompatActivity {
             quizData = DatabaseHandler.getQuizItem(context);
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            MainActivity.isLoaded = true;
+         }
     }
 }

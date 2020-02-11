@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
-    private int poeng = 0;
+    public int poeng = 0;
     private int antallQuizSpm = 0;
     private TextView galtSvar;
     private Button svarButtonOn;

@@ -1,15 +1,18 @@
 package com.inducesmile.oblig1;
 
 
+/* This test maneuver from MainActivity to AddActivity and adds an image to the database. The number of pictures is checked before
+the image is added, and after the image is added. If sizeBefore+1 equals sizeAfter, the test is passed.
+
+ */
+
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.widget.ImageView;
 
-import androidx.test.annotation.UiThreadTest;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.intent.Intents;
@@ -53,6 +56,7 @@ public class AddTest {
         Instrumentation.ActivityResult result = createImageStub();
         Intents.intending(hasAction(MediaStore.ACTION_IMAGE_CAPTURE)).respondWith(result);
 
+
     }
 
     @After
@@ -73,12 +77,12 @@ public class AddTest {
         AddActivity activity = (AddActivity) getActivityInstance();
 
         onView(withId(R.id.button_camera)).perform(click());
-       onView(withId(R.id.save_editText)).perform(typeText("test"));
+        onView(withId(R.id.save_editText)).perform(typeText("test"));
         onView(withId(R.id.button_Save)).perform(click());
 
         int sizeAfter = MainActivity.quizData.size();
 
-        Truth.assertThat(sizeBefore+1).isEqualTo(sizeAfter);
+        Truth.assertThat(sizeBefore + 1).isEqualTo(sizeAfter);
 
     }
 
@@ -96,7 +100,7 @@ public class AddTest {
         return currentActivity[0];
     }
 
-    private Instrumentation.ActivityResult createImageStub(){
+    private Instrumentation.ActivityResult createImageStub() {
         Bundle bundle = new Bundle();
         bundle.putParcelable("data", BitmapFactory.decodeResource(quizRule.getActivity().getResources(), R.drawable.barttest));
         Intent resultData = new Intent();

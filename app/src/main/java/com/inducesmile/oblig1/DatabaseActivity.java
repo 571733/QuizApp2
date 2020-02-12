@@ -1,13 +1,13 @@
 package com.inducesmile.oblig1;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+/*
+The "database"-activity: Listview, adapter, delete..
+ */
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.inducesmile.oblig1.database.AppDatabase;
 import com.inducesmile.oblig1.database.QuizItem;
@@ -120,7 +122,7 @@ public class DatabaseActivity extends AppCompatActivity {
         private Context context;
         QuizItem quizItem;
 
-        AsyncclassRemove (Context context, QuizItem quizItem){
+        AsyncclassRemove(Context context, QuizItem quizItem) {
             this.context = context;
             this.quizItem = quizItem;
         }

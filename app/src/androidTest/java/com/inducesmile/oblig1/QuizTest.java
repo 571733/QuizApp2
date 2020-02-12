@@ -1,13 +1,17 @@
 package com.inducesmile.oblig1;
 
+/* This test maneuver from MainActivity to QuizActivity and runs the Quiz. The task for this test
+is to check whether the quizscore is correct or not. When the app runs for the first time there should
+be a picture where the correct answer is Cartman. In this test, each question will be answered with the name
+cartman. The score should therefore be 1 of number of questions.
+
+ */
+
 
 import android.app.Activity;
-import android.view.View;
 
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
-import androidx.test.espresso.ViewAssertion;
-import androidx.test.espresso.core.internal.deps.guava.collect.Iterables;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -28,13 +32,13 @@ import java.util.Iterator;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 @RunWith(AndroidJUnit4.class)
 public class QuizTest {
+
     @Rule
     public ActivityTestRule<MainActivity> quizRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -58,14 +62,20 @@ public class QuizTest {
         try {
             onView(withId(R.id.quiz)).perform(click());
         } catch (NoMatchingViewException e) {
+            //If the alertDialog appears, a username must be set
             onView(withText("Sett brukernavn")).perform(click());
             onView(withId(R.id.quiz)).perform(click());
         }
         QuizActivity activity = (QuizActivity) getActivityInstance();
         onView(withId(R.id.quiz_button)).perform(click());
+
+        //loop through the quiz.
         for (int i = 0; i < MainActivity.quizData.size(); i++) {
             onView(withId(R.id.svar_editText)).perform(typeText("cartman"));
             onView(withId(R.id.svar_button)).perform(click());
+
+            //The quizButton will be disabled after the last question. Without this if-sentence
+            //the test will crash
             if (activity.findViewById(R.id.quiz_button).isEnabled()) {
                 onView(withId(R.id.quiz_button)).perform(click());
             }
@@ -77,6 +87,7 @@ public class QuizTest {
 
     }
 
+    //This test crosses multiple activities. This method is used to get current activity
     private Activity getActivityInstance() {
         final Activity[] currentActivity = {null};
 

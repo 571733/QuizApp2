@@ -1,5 +1,9 @@
 package com.inducesmile.oblig1;
 
+/*
+To make sure that pictures from database is loaded before the tests start running
+ */
+
 import androidx.test.espresso.IdlingResource;
 
 public class QuizIdlingRes implements IdlingResource {

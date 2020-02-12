@@ -1,7 +1,10 @@
 package com.inducesmile.oblig1;
 
-import androidx.appcompat.app.AppCompatActivity;
+/*
+Play quiz.
+ */
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.inducesmile.oblig1.database.QuizItem;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -146,9 +147,6 @@ public class QuizActivity extends AppCompatActivity {
             quizDone.setText("Quizzen er ferdig. Du kan trykke på \"Quiz\" i menyen for å spille igjen");
             svarButtonOff.setVisibility(View.INVISIBLE);
             turnOnQuizButton.setVisibility(View.INVISIBLE);
-
-            //Toast.makeText(this, "Du har nå fullført quizen", Toast.LENGTH_LONG).show();
-            //quizDatabase = MainActivity.quizData; //Virker ikke
         }
 
         String dbName = quizDatabase.get(globalIndex).name;

@@ -1,17 +1,12 @@
 package com.inducesmile.oblig1;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import androidx.room.Room;
-
-
 import com.inducesmile.oblig1.database.AppDatabase;
 import com.inducesmile.oblig1.database.QuizItem;
-
 import java.util.ArrayList;
 
 public class DatabaseHandler {
@@ -42,7 +37,6 @@ public class DatabaseHandler {
         list.add(item2);
 
         saveItemToDatabase(context, list);
-
     }
 
     private static void saveItemToDatabase(Context context, ArrayList<QuizItem> list) {

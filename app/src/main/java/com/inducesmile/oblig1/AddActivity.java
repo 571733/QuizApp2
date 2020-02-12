@@ -1,5 +1,11 @@
 package com.inducesmile.oblig1;
 
+/*
+Adds pictures from camera or gallery and saves them. Converts bitmap to byte array and stores them in database(, which is
+not recommended). Would keep only the path to the image in the database and save the image in the internal storage
+of the application next time..
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.room.Room;
@@ -125,20 +131,18 @@ public class AddActivity extends AppCompatActivity {
             BitmapDrawable drawable = (BitmapDrawable) cameraImage.getDrawable();
             Bitmap bitmap = drawable.getBitmap();
            Log.i("Bitten", ""+bitmap.getByteCount());
-            if (bitmap.getByteCount() > 2000000){
-                compressImage(bitmap);
-                Log.i("storring1", ""+compressImage(bitmap));
-            }
+
             savePicName = (EditText) findViewById(R.id.save_editText);
             Log.i("Status", "" + savePicName.getText().toString());
             if (!savePicName.getText().toString().equals("")) {
+                //CompressImage: reduce image size. Above 2 MB = problem and app crashes.
                 byte[] bytes = DbBitmapUtility.getBytes(compressImage(bitmap));
-               Log.i("storring ", ""+bytes.length);
 
 
 
                 QuizItem newItem = new QuizItem(0, savePicName.getText().toString(), bytes);
 
+                //Add to Room database
                 Asyncclass asyncTask = new Asyncclass(getApplicationContext(), newItem);
                         asyncTask.execute();
 
@@ -159,7 +163,7 @@ public class AddActivity extends AppCompatActivity {
         startActivityForResult(galleryIntent, RESULT_LOAD_RESULT);
 
     }
-
+    //reading and writing to Room database must be asynchronous.
     private static class Asyncclass extends AsyncTask<Void, Void, Void> {
 
         private Context context;
@@ -179,6 +183,7 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
+    //Compress image to avoid problems since bitmap is saved directly to Room database as bytes
     private Bitmap compressImage(Bitmap image) {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

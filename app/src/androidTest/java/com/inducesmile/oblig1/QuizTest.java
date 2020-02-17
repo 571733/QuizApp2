@@ -63,7 +63,8 @@ public class QuizTest {
             onView(withId(R.id.quiz)).perform(click());
         } catch (NoMatchingViewException e) {
             //If the alertDialog appears, a username must be set
-            onView(withText("Sett brukernavn")).perform(click());
+            //Set username should be something else if another language is set
+            onView(withText("SET USERNAME")).perform(click());
             onView(withId(R.id.quiz)).perform(click());
         }
         QuizActivity activity = (QuizActivity) getActivityInstance();

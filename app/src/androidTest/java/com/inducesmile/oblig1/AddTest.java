@@ -71,7 +71,8 @@ public class AddTest {
         try {
             onView(withId(R.id.add)).perform(click());
         } catch (NoMatchingViewException e) {
-            onView(withText("Sett brukernavn")).perform(click());
+           // onView(withText("")).perform(typeText("test"));
+            onView(withText("SET USERNAME")).perform(click());
             onView(withId(R.id.add)).perform(click());
         }
         AddActivity activity = (AddActivity) getActivityInstance();

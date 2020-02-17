@@ -1,7 +1,7 @@
 package com.inducesmile.oblig1;
 
 /*
-For changeing username
+For changing username
  */
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +35,7 @@ public class Preferences extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username_editText);
         usernameButton = findViewById(R.id.changeUserName_Button);
         currentUsername = findViewById(R.id.currentusername_textView);
-        currentUsername.setText(usernameToStore.getString("username", "nothing"));
+        currentUsername.setText(" "+usernameToStore.getString("username", "nothing"));
         //Log.i("TheUSer ", username);
 
 
@@ -43,8 +43,23 @@ public class Preferences extends AppCompatActivity {
 
     public void ChangeUsername (View view){
         usernameToStore.edit().putString("username", usernameEditText.getText().toString()).apply();
-        currentUsername.setText(usernameToStore.getString("username", "nothing"));
+        currentUsername.setText(" "+usernameToStore.getString("username", "nothing"));
         //currentUsername.setText(username);
+    }
+
+    public void ChangeToEng (View view){
+        Language.setLocale(this, "en");
+        Intent intent = new Intent(this, Preferences.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public void ChangeToNo (View view){
+        Language.setLocale(this, "nb");
+        //Reload page with new language
+        Intent intent = new Intent(this, Preferences.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     //Gå til annen aktivitet

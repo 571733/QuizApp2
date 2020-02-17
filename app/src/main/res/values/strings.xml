@@ -8,8 +8,30 @@
     <string name="save_button">Save</string>
     <string name="picFromGallery_button">From gallery</string>
     <string name="startQuiz_button">Start quiz</string>
-    <string name="svarOnPictureHint_EditText">ho is in this picture..</string>
+    <string name="svarOnPictureHint_EditText">Who is in this picture..</string>
     <string name="currentScore_TextView">your score: 0/0</string>
+    <string name="gotSaved">Picture is saved</string>
+    <string name="nameMissing">Please give the picture a name</string>
+    <string name="pictureMissing">You must choose a picture</string>
+    <string name="chooseUsername">Choose username</string>
+    <string name="setUsername">Set username</string>
+    <string name="changeUsername">Change Username</string>
+    <string name="currentUsername">Current username is</string>
+    <string name="buttonTextChangeNext">Next</string>
+    <string name="buttonTextSvar">Answer</string>
+    <string name="wrongAnswerText">Wrong answer! Correct answer is </string>
+    <string name="yourScore">Your score </string>
+    <string name="quizDone">The quiz is done. You can press "Quiz" in the menu to play again. </string>
+    <string name="onPicHint">Who is on the picture </string>
+    <string name="emptyDbQuiz"> Database is empty. Choose "Database" to add pictures.</string>
+    <string name="toNorwegian"> Set language to Norwegian.</string>
+    <string name="toEnglish"> Set language to English.</string>
+    <string name="curUserName"> Current username:</string>
+    <string name="hintChangeUsername"> Enter username</string>
+
+
+
+
 
 
 </resources>

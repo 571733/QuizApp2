@@ -65,12 +65,12 @@
         android:background="@drawable/custom_button"
         android:enabled="false"
         android:onClick="svar"
-        android:text="Svar"
+        android:text="@string/buttonTextSvar"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_quiz"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_quiz" />
 
     <TextView
         android:id="@+id/score_textView"

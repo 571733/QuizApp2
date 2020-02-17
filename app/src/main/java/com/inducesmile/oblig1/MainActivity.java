@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.inducesmile.oblig1.database.QuizItem;
 import java.util.ArrayList;
@@ -23,10 +25,15 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<QuizItem> quizData = new ArrayList<>();
     public static boolean isLoaded = false;
     SharedPreferences usernameStored;
+    String test = "nb";
+    Language curLanguage;
+    int checkedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Language.setLocale(this, Language.getLanguage(this));
+        Log.i("Lokal er ", Language.getLanguage(this));
         setContentView(R.layout.activity_main);
 
         //Check if username is set
@@ -51,16 +58,51 @@ public class MainActivity extends AppCompatActivity {
     public void dialogAlert() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        alert.setTitle("Velg brukernavn");
+        alert.setTitle(getResources().getString(R.string.chooseUsername));
+        String[] items = {"English","Norwegian"};
+        int checkedItem = 2;
+        alert.setSingleChoiceItems(items, checkedItem, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        Toast.makeText(MainActivity.this, "Clicked on English", Toast.LENGTH_SHORT).show();
+                        Language.setLocale(MainActivity.this, "en");
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity.this, "Clicked on Norwegian", Toast.LENGTH_SHORT).show();
+                        Language.setLocale(MainActivity.this, "nb");
+                        break;
+
+                    case 2:
+                        break;
+
+                }
+
+            }
+
+        });
+
         final EditText input = new EditText(this);
         alert.setView(input);
 
-        alert.setPositiveButton("Sett brukernavn", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(getResources().getString(R.string.setUsername), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                String value = input.getText().toString();
-                usernameStored.edit().putString("username", value).apply();
+                String value = (input.getText().toString().trim());
+                if (value.length() > 0) {
+                    usernameStored.edit().putString("username", value).apply();
+                }
+               /*
+                Problems with tests if reloading activity is enabled..
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+                */
             }
+
         });
+
         alert.show();
     }
 

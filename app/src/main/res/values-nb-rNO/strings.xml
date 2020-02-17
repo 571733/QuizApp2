@@ -10,5 +10,25 @@
     <string name="startQuiz_button">Start quiz</string>
     <string name="svarOnPictureHint_EditText">Hvem er på bildet..</string>
     <string name="currentScore_TextView">Din score: 0/0</string>
+    <string name="gotSaved">Bildet ble lagret</string>
+    <string name="nameMissing">Vennligst gi bildet ett navn</string>
+    <string name="pictureMissing">Du må først velge ett bilde</string>
+    <string name="chooseUsername">Velg brukernavn</string>
+    <string name="setUsername">Sett brukernavn</string>
+    <string name="changeUsername">Endre brukernavn</string>
+    <string name="currentUsername">Nåværende brukernavn er</string>
+    <string name="quizDone">Quizzen er ferdig. Du kan trykke på "Quiz" i menyen for å spille igjen </string>
+    <string name="buttonTextChangeNext">Neste</string>
+    <string name="buttonTextSvar">Svar</string>
+    <string name="wrongAnswerText">Feil svar! Riktig svar er </string>
+    <string name="yourScore">Din score </string>
+    <string name="onPicHint">Hvem er på bildet? </string>
+    <string name="emptyDbQuiz"> Det er ingen bilder i databasen. Velg "Database" for å legge til bilder</string>
+    <string name="toNorwegian"> Sett språk til Norsk.</string>
+    <string name="toEnglish"> Sett språk til Engelsk.</string>
+    <string name="curUserName"> Nåværende brukernavn:</string>
+    <string name="hintChangeUsername"> Skriv inn brukernavn</string>
+
+
 
 </resources>

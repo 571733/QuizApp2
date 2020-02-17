@@ -147,14 +147,14 @@ public class AddActivity extends AppCompatActivity {
                         asyncTask.execute();
 
                 addDatabase.add(newItem);
-                Toast.makeText(this, "Bildet ble lagret", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.gotSaved), Toast.LENGTH_SHORT).show();
                 savePicName.setText("");
             } else {
-                Toast.makeText(this, "Vennligst gi bildet ett navn", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.nameMissing), Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Toast.makeText(this, "Du må først velge ett bilde", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.pictureMissing), Toast.LENGTH_SHORT).show();
         }
     }
 

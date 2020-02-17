@@ -105,8 +105,8 @@ public class QuizActivity extends AppCompatActivity {
             quizButton.setEnabled(false);
 
             //Startknapp endrer navn fra Start quiz til Neste
-            if (!quizButton.getText().equals("Neste")) {
-                quizButton.setText("Neste");
+            if (!quizButton.getText().equals(getResources().getString(R.string.buttonTextChangeNext))) {
+                quizButton.setText(getResources().getString(R.string.buttonTextChangeNext));
                 svarButtonOn.setVisibility(View.VISIBLE);
                 svarEditText.setVisibility(View.VISIBLE);
             }
@@ -117,9 +117,9 @@ public class QuizActivity extends AppCompatActivity {
             EditText EmptyEditText = (EditText) findViewById(R.id.svar_editText);
             EmptyEditText.setText("");
             Log.i("quizIndex ", "" + globalIndex);
-            svarEditText.setHint("Hvem er på bildet?");
+            svarEditText.setHint(getResources().getString(R.string.onPicHint));
         } else {
-            Toast.makeText(this, "Det er ingen bilder i databasen. Velg \"Database\" for å legge til bilder ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.emptyDbQuiz), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -144,7 +144,7 @@ public class QuizActivity extends AppCompatActivity {
         if (antallQuizSpm > 1) {
             turnOnQuizButton.setEnabled(true);
         } else {
-            quizDone.setText("Quizzen er ferdig. Du kan trykke på \"Quiz\" i menyen for å spille igjen");
+            quizDone.setText(getResources().getString(R.string.quizDone));
             svarButtonOff.setVisibility(View.INVISIBLE);
             turnOnQuizButton.setVisibility(View.INVISIBLE);
         }
@@ -158,10 +158,10 @@ public class QuizActivity extends AppCompatActivity {
 
         } else {
             wrongAnswerIcon.setVisibility(View.VISIBLE);
-            galtSvar.setText("Feil svar! Riktig svar er " + dbName);
+            galtSvar.setText(getResources().getString(R.string.wrongAnswerText) +" "+ dbName);
         }
         TextView score = (TextView) findViewById(R.id.score_textView);
-        score.setText("Din score " + Integer.toString(poeng) + " / " + Integer.toString(antKlikk));
+        score.setText(getResources().getString(R.string.yourScore)+" "+ Integer.toString(poeng) + " / " + Integer.toString(antKlikk));
 
         quizDatabase.remove(globalIndex);
         turnOnQuizButton.setFocusable(true);
